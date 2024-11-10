@@ -1,13 +1,8 @@
 package io.github.UniSim;
 
-import java.util.HashMap;
-import java.util.HashSet;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
@@ -25,7 +20,6 @@ public class InputHandler {
         if (Gdx.input.isButtonPressed(Buttons.LEFT)) {
             Vector2 clickPos = new Vector2(Gdx.input.getX(), Gdx.input.getY());
             Vector2 worldPos = vp.unproject(clickPos);
-            System.err.println(worldPos);
             bm.addBuilding(worldPos);
         } else if (Gdx.input.isButtonPressed(Buttons.RIGHT)) {
             Vector2 clickPos = new Vector2(Gdx.input.getX(), Gdx.input.getY());
