@@ -110,7 +110,7 @@ public class Main extends ApplicationAdapter {
             }
         }
     }
-    
+
     private void draw() {
         ScreenUtils.clear(Color.BLACK);
 
@@ -122,11 +122,22 @@ public class Main extends ApplicationAdapter {
 
         long timeLeftMs = gameLengthMs - (System.currentTimeMillis() - startTimeMs);
         long timeLeftSeconds = Math.ceilDiv(timeLeftMs, 1000);
+        // A bit crude but this will do for now, this should ideally be in logic()
+        if (timeLeftSeconds == 0) {
+            Gdx.app.exit();
+        }
         CharSequence timerText = String.format("Time remaining: %d seconds", timeLeftSeconds);
         font.draw(batch, timerText, 10, fvp.getWorldHeight() - 10);
 
-        // building counters
-
+        CharSequence counterText;
+        counterText = String.format("cafes: %d", buildings.get(cafe).size());
+        font.draw(batch, counterText, 10, fvp.getWorldHeight() - 25);
+        counterText = String.format("accoms: %d", buildings.get(accom).size());
+        font.draw(batch, counterText, 10, fvp.getWorldHeight() - 40);
+        counterText = String.format("sports centres: %d", buildings.get(sport).size());
+        font.draw(batch, counterText, 10, fvp.getWorldHeight() - 55);
+        counterText = String.format("lecture halls: %d", buildings.get(lectureHall).size());
+        font.draw(batch, counterText, 10, fvp.getWorldHeight() - 70);
 
         // draw each building type
         for (Texture t : buildings.keySet()) {
@@ -137,10 +148,6 @@ public class Main extends ApplicationAdapter {
         }
 
         batch.end();
-    }
-
-    private void logic() {
-
     }
 
     @Override
