@@ -77,6 +77,25 @@ public class Main extends ApplicationAdapter {
             Vector2 worldPos = fvp.unproject(clickPos);
             HashSet<Vector2> coordSet = buildings.get(currBuilding);
             coordSet.add(worldPos);
+        } else if (Gdx.input.isButtonPressed(Buttons.RIGHT)) {
+            Vector2 clickPos = new Vector2(Gdx.input.getX(), Gdx.input.getY());
+            Vector2 worldPos = fvp.unproject(clickPos);
+            tryDeleteBuilding(worldPos.x, worldPos.y);
+        }
+    }
+
+    private void tryDeleteBuilding(float mx, float my) {
+        // this little maneuver is going to cost us 84 years
+        // do NOT try to delete buildngs if you value your CPU's life
+        for (Texture t : buildings.keySet()) {
+            HashSet<Vector2> coords = buildings.get(t);
+            // tpos is the bottom left corner of our texture
+            for (Vector2 tpos : (HashSet<Vector2>)coords.clone()) {
+                if (mx <= tpos.x + t.getWidth() && my <= tpos.y + t.getHeight()
+                        && mx >= tpos.x && my >= tpos.y) {
+                   coords.remove(tpos);
+                }
+            }
         }
     }
     
