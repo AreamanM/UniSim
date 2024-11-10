@@ -5,11 +5,11 @@ import java.util.HashSet;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -18,6 +18,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends ApplicationAdapter {
     private SpriteBatch batch;
+
+    private BitmapFont font;
 
     private Texture map;
 
@@ -31,12 +33,18 @@ public class Main extends ApplicationAdapter {
     private HashMap<Texture, HashSet<Vector2>> buildings;
     private Texture currBuilding;
 
+    private final long gameLengthMs = 300000;
+    private long startTimeMs;
+
     @Override
     public void create() {
         batch = new SpriteBatch();
+        font = new BitmapFont();
 
         // our map
         map = new Texture("map.jpg");
+
+        startTimeMs = System.currentTimeMillis();
 
         // building textures loading time
         accom = new Texture("house.png");
@@ -111,6 +119,14 @@ public class Main extends ApplicationAdapter {
 
         batch.begin();
         batch.draw(map, 0, 0, fvp.getWorldWidth(), fvp.getWorldHeight());
+
+        long timeLeftMs = gameLengthMs - (System.currentTimeMillis() - startTimeMs);
+        long timeLeftSeconds = Math.ceilDiv(timeLeftMs, 1000);
+        CharSequence timerText = String.format("Time remaining: %d seconds", timeLeftSeconds);
+        font.draw(batch, timerText, 10, fvp.getWorldHeight() - 10);
+
+        // building counters
+
 
         // draw each building type
         for (Texture t : buildings.keySet()) {
