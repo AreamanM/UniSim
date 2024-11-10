@@ -24,6 +24,7 @@ public class Main extends ApplicationAdapter {
     private Texture accom;
     private Texture cafe;
     private Texture lectureHall;
+    private Texture sport;
 
     FitViewport fvp;
 
@@ -41,6 +42,7 @@ public class Main extends ApplicationAdapter {
         accom = new Texture("house.png");
         lectureHall = new Texture("lecturehall.png");
         cafe = new Texture("cafe.png");
+        sport = new Texture("sport.png");
 
         // place accoms by default
         currBuilding = accom;
@@ -50,6 +52,7 @@ public class Main extends ApplicationAdapter {
         buildings.put(accom, new HashSet<>());
         buildings.put(lectureHall, new HashSet<>());
         buildings.put(cafe, new HashSet<>());
+        buildings.put(sport, new HashSet<>());
 
         // remember to update the default window size if the map tex is changed
         // 640x640 at the moment for map.jpg
@@ -70,6 +73,7 @@ public class Main extends ApplicationAdapter {
         } else if (Gdx.input.isKeyPressed(Keys.NUM_3)) {
             currBuilding = cafe;
         } else if (Gdx.input.isKeyPressed(Keys.NUM_4)) {
+            currBuilding = sport;
         }
 
         if (Gdx.input.isButtonPressed(Buttons.LEFT)) {
@@ -85,7 +89,7 @@ public class Main extends ApplicationAdapter {
     }
 
     private void tryDeleteBuilding(float mx, float my) {
-        // this little maneuver is going to cost us 84 years
+        // this little maneuver is going to cost us 51 years
         // do NOT try to delete buildngs if you value your CPU's life
         for (Texture t : buildings.keySet()) {
             HashSet<Vector2> coords = buildings.get(t);
