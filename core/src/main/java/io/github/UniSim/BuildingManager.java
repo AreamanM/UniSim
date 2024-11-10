@@ -47,7 +47,6 @@ public class BuildingManager {
     public void draw(SpriteBatch sb) {
         for (Building b : buildings.keySet()) {
             for (Vector2 pos : buildings.get(b)) {
-                System.err.println("hiii");
                 b.draw(sb, pos);
             }
         }
