@@ -3,7 +3,6 @@ package io.github.UniSim;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -19,7 +18,7 @@ public class Main extends ApplicationAdapter {
     private InputHandler ih;
     private UIRenderer uir;
 
-    private final long gameLengthMs = 30000;
+    private final long gameLengthMs = 300000;
     private long startTimeMs;
 
     @Override
