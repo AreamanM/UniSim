@@ -11,6 +11,8 @@ Right click: delete building under cursor, can be pressed down to mass delete
 
 ### Attribution:
 
+map.jpg: https://gamedev.stackexchange.com/questions/62252/create-a-city-top-view
+
 house.png: https://www.flaticon.com/free-icon/house_609803?term=house&page=1&position=6&origin=search&related_id=609803
 
 lecturehall.png: https://www.flaticon.com/free-icon/college-building_11347547?term=lecture+hall&page=1&position=32&origin=search&related_id=11347547
