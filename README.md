@@ -1,12 +1,20 @@
 UniSim is a game focused on creating the best University campus possible in 5 minutes.
 
+
 ### Keybindings
+
 Left click: place currently selected building
+
 Right click: delete building under cursor, can be pressed down to mass delete
+
 1: select accomodation as current building (default)
+
 2: select lecture hall as current building
+
 3: select cafe as current building
+
 4: select sports centre as current building
+
 
 
 ### Attribution:
